@@ -39,7 +39,7 @@ module.exports = function(servoX, servoZ) {
     C.getXAxisPercentageForYCoord = function(y) {
         y = y > C.screen.height ? C.screen.height : y;
         y = y < 0 ? 0 : y;
-        return 100 - (100 * y / C.screen.height);
+        return 100 * y / C.screen.height;
     };
 
     C.setScreenDistanceCM = function(distance, cmWidth, cmHeight) {
@@ -54,7 +54,6 @@ module.exports = function(servoX, servoZ) {
         angle = 180 * Math.acos(distance / c)/Math.PI;
         C.angles.z.min = 90 - angle;
         C.angles.z.max = 180 - C.angles.z.min;
-        console.log(a,b,c, angle);
         //
         a = distance;
         b = C.screen.height/2;

@@ -42,8 +42,8 @@ module.exports = function(){
     };
 
     A.restrict = function(percentage) {
-        var minP = (restrictions.angle.min/180);
-        var maxP = (restrictions.angle.max/180);
+        var minP = (A.restrictions.angle.min/180);
+        var maxP = (A.restrictions.angle.max/180);
         percentage = percentage<minP ? minP : percentage;
         percentage = percentage>maxP ? maxP : percentage;
         return percentage;
