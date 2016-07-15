@@ -13,15 +13,12 @@ module.exports = function(servoX, servoZ) {
         servoControllers : {
             x:servoX, z:servoZ
         },
-        screen {
+        screen : {
             width : 0,
             height : 0,
             distance : 0
         }
     };
-
-    C.servoControllers.x.setAngleRestrictions(C.angles.x.min, C.angles.x.max);
-    C.servoControllers.z.setAngleRestrictions(C.angles.z.min, C.angles.z.max);
 
     C.goToPercentage = function(xAxisPercentage, zAxisPercentage){
         C.servoControllers.x.goToPercentage(xAxisPercentage);
@@ -45,14 +42,32 @@ module.exports = function(servoX, servoZ) {
         return 100 - (100 * y / C.screen.height);
     };
 
-    C.setScreenDistanceCM = function(distance) {
-        C.screen.width = distance * Math.sin(C.angles.z.min);
-        C.screen.width += distance * Math.sin(C.angles.z.max-90);
-        C.screen.height = distance * Math.sin(C.angles.x.min);
-        C.screen.height += distance * Math.sin(C.angles.x.max-90);
+    C.setScreenDistanceCM = function(distance, cmWidth, cmHeight) {
+        console.log("_____________________");
+        C.screen.width = cmWidth;
+        C.screen.height = cmHeight;
+        var a,b,c, angle;
+        //
+        a = distance;
+        b = C.screen.width/2;
+        c = Math.sqrt((a*a) + (b*b));
+        angle = 180 * Math.acos(distance / c)/Math.PI;
+        C.angles.z.min = 90 - angle;
+        C.angles.z.max = 180 - C.angles.z.min;
+        console.log(a,b,c, angle);
+        //
+        a = distance;
+        b = C.screen.height/2;
+        c = Math.sqrt((a*a) + (b*b));
+        angle = 180 * Math.acos(distance / c)/Math.PI;
+        C.angles.x.min = 90 - angle;
+        C.angles.x.max = 180 - C.angles.x.min;
+
+        console.dir(C.angles);
+        console.log("_____________________");
     };
 
-    C.setScreenDistanceCM(10);
+    C.setScreenDistanceCM(10, 10, 10);
 
     return C;
 }
