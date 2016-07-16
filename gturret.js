@@ -19,7 +19,7 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	turret.setScreenDistanceCM(distanceToScreenCM,
 			screenDimsCM.x, screenDimsCM.y);
 
-	var frequency = 500;
+	var frequency = 110;
 	var locations = [];
 	var index = 0;
 	//
@@ -44,7 +44,7 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 		turret.goToCoordinate(locations[index][0], locations[index][1]);
 		index++;
 		index = index >= locations.length ? 0 :index; 
-	}, 500);
+	}, frequency);
 	//#
 	setTimeout(function() {gpioServer.end(); clearInterval(servoUpdateInterval)}, 3 * ((locations.length)*frequency));
 });
