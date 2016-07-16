@@ -9,7 +9,8 @@ var screenDimsCM = { x: 10, y: 10};
 };*/
 
 require(__dirname+'/gpio_server.js')(function(gpioServer) {
-
+	
+	
 	var servoX = require(__dirname+"/servo_controller.js")(gpioServer, 17, "x-axis");
 	var servoZ = require(__dirname+"/servo_controller.js")(gpioServer, 18, "z-axis");
 
@@ -18,14 +19,32 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	turret.setScreenDistanceCM(distanceToScreenCM,
 			screenDimsCM.x, screenDimsCM.y);
 
-
-	setTimeout(function() {turret.goToCoordinate(0, 0)}, 1000);
-	setTimeout(function() {turret.goToCoordinate(10, 10)}, 2000);
-	setTimeout(function() {turret.goToCoordinate(0, 10)}, 3000);
-	setTimeout(function() {turret.goToCoordinate(10, 0)}, 4000);
-	setTimeout(function() {turret.goToCoordinate(5, 5)}, 5000);
-	setTimeout(function() {turret.goToCoordinate(0, 0)}, 6000);
-	
-	
-	setTimeout(function() {gpioServer.end();}, 7000);
+	var frequency = 500;
+	var locations = [];
+	var index = 0;
+	//
+	locations.push([0,0]);
+	locations.push([10,0]);
+	locations.push([0,0]);
+	locations.push([0,10]);
+	locations.push([10,10]);
+	locations.push([5,5]);
+	locations.push([4,5]);
+	locations.push([4,4]);
+	locations.push([3,4]);
+	locations.push([3,3]);
+	locations.push([2,3]);
+	locations.push([2,2]);
+	locations.push([1,2]);
+	locations.push([1,1]);
+	locations.push([0,1]);
+	locations.push([0,0]);
+	//
+	var servoUpdateInterval = setInterval(function(){
+		turret.goToCoordinate(locations[index][0], locations[index][1]);
+		index++;
+		index = index >= locations.length ? 0 :index; 
+	}, 500);
+	//#
+	setTimeout(function() {gpioServer.end(); clearInterval(servoUpdateInterval)}, ((1+locations.length)*frequency);
 });
