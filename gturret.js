@@ -19,7 +19,7 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	turret.setScreenDistanceCM(distanceToScreenCM,
 			screenDimsCM.x, screenDimsCM.y);
 
-	var frequency = 200;
+	var frequency = 500;
 	var locations = [];
 	var index = 0;
 	//
