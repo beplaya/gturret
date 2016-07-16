@@ -5,12 +5,6 @@ module.exports = function(cb){
 
 	GPIO_SERVER.HOST = '127.0.0.1';
 	GPIO_SERVER.PORT = 8888;
-
-
-	GPIO_SERVER.change = 1;
-	GPIO_SERVER.min = 500;
-	GPIO_SERVER.pw = 0; // pulsewidth in microseconds
-	GPIO_SERVER.max = 2500;
 	GPIO_SERVER.gpio = new PiFastGpio();
 	GPIO_SERVER.applyPulseWidth = function(pw, servoController) {
 		GPIO_SERVER.gpio.setServoPulsewidth(servoController.pin, pw); // servo off
@@ -20,6 +14,9 @@ module.exports = function(cb){
 		GPIO_SERVER.gpio.close();
 	};
 	GPIO_SERVER.gpio.connect(GPIO_SERVER.HOST, GPIO_SERVER.PORT, function(err) {
+		if (err) throw err;
+
+		console.log("connected!");
 		cb(GPIO_SERVER);
 	});
 }
