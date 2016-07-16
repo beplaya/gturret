@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beplaya/gturretpi.git"
+    "url": "git+https://github.com/beplaya/gturret.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/beplaya/gturretpi/issues"
+    "url": "https://github.com/beplaya/gturret/issues"
   },
-  "homepage": "https://github.com/beplaya/gturretpi#readme"
+  "homepage": "https://github.com/beplaya/gturret#readme"
 }
