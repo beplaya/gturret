@@ -27,5 +27,5 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	setTimeout(function() {turret.goToCoordinate(0, 0)}, 6000);
 	
 	
-	gpioServer.end();
+	setTimeout(function() {gpioServer.end();}, 7000);
 });
