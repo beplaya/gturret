@@ -2,19 +2,24 @@
 var distanceToScreenCM = 10;
 var screenDimsCM = { x: 10, y: 10};
 
-var gpioServer = {
+/*var gpioServer = {
     applyPulseWidth : function(pw, servoController) {
         console.log('applyPulseWidth', pw, servoController.pin, servoController.name);
     }
-};
+};*/
 
-var servoX = require(__dirname+"/servo_controller.js")(gpioServer, 18, "x-axis");
-var servoZ = require(__dirname+"/servo_controller.js")(gpioServer, 14, "z-axis");
+require(__dirname+'/gpio_server.js')(function(gpioServer) {
 
-var turret = require(__dirname+"/two_axis_servo_controller.js")(servoX, servoZ);
+	var servoX = require(__dirname+"/servo_controller.js")(gpioServer, 18, "x-axis");
+	var servoZ = require(__dirname+"/servo_controller.js")(gpioServer, 14, "z-axis");
 
-turret.setScreenDistanceCM(distanceToScreenCM,
-        screenDimsCM.x, screenDimsCM.y);
+	var turret = require(__dirname+"/two_axis_servo_controller.js")(servoX, servoZ);
+
+	turret.setScreenDistanceCM(distanceToScreenCM,
+			screenDimsCM.x, screenDimsCM.y);
 
 
-turret.goToCoordinate(1, 9);
+	turret.goToCoordinate(1, 9);
+	
+	gpioServer.end();
+});
