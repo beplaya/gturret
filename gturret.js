@@ -53,6 +53,7 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	locations.push([0, 0]);
 	//
 	var servoUpdateInterval = setInterval(function(){
+		console.log(locations[index][0], locations[index][1]);
 		turret.goToCoordinate(locations[index][0], locations[index][1]);
 		index++;
 		index = index >= locations.length ? 0 :index; 
