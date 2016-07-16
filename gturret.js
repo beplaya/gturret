@@ -24,10 +24,10 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	var index = 0;
 	//
 	locations.push([0,0]);
-	locations.push([10,0]);
+	locations.push([5,0]);
 	locations.push([0,0]);
-	locations.push([0,10]);
-	locations.push([10,10]);
+	locations.push([0,5]);
+	locations.push([2,2]);
 	locations.push([5,5]);
 	locations.push([4,5]);
 	locations.push([4,4]);
