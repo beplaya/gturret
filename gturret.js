@@ -23,8 +23,9 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	var locations = [];
 	var index = 0;
 	//
-	locations.push([0,0]);
+	locations.push([1, 1]);
 	locations.push([5,0]);
+	locations.push([0,0]);
 	locations.push([0,0]);
 	locations.push([0,5]);
 	locations.push([2,2]);
@@ -39,16 +40,15 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	locations.push([1,1]);
 	locations.push([0,1]);
 	locations.push([0,0]);
-	locations.push([2,0]);
+	locations.push([1,2]);
 	locations.push([2,2]);
-	locations.push([2,3]);
-	locations.push([2,4]);
-	locations.push([2,5]);
-	locations.push([2,4]);
-	locations.push([2,3]);
-	locations.push([2,2]);
-	locations.push([2,1]);
-	locations.push([2,0]);
+	locations.push([3,2]);
+	locations.push([4,2]);
+	locations.push([6,2]);
+	locations.push([7,2]);
+	locations.push([8,2]);
+	locations.push([9,2]);
+	locations.push([10,2]);
 	//
 	locations.push([0, 0]);
 	//
