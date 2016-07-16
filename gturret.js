@@ -46,5 +46,5 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 		index = index >= locations.length ? 0 :index; 
 	}, 500);
 	//#
-	setTimeout(function() {gpioServer.end(); clearInterval(servoUpdateInterval)}, ((1+locations.length)*frequency));
+	setTimeout(function() {gpioServer.end(); clearInterval(servoUpdateInterval)}, 3 * ((1+locations.length)*frequency));
 });
