@@ -14,6 +14,7 @@ module.exports = function(cb){
 		GPIO_SERVER.gpio.close();
 	};
 	GPIO_SERVER.gpio.connect(GPIO_SERVER.HOST, GPIO_SERVER.PORT, function(err) {
+		if (err) console.log(err);
 		if (err) throw err;
 
 		console.log("connected!");
