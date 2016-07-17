@@ -37,7 +37,7 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
     var timerIntervalFrequency = 1000;
     var timerInterval = setInterval(function(){
                 runTime += timerIntervalFrequency;
-                console.log('Run time (s):', runTime, ' Time left (s):', (totalRunTime-runTime));
+                console.log('Run time (s):', runTime/1000, ' Time left (s):', (totalRunTime-runTime)/1000);
                 turret.log();
             }, timerIntervalFrequency);
 	var servoUpdateInterval = setInterval(function(){
