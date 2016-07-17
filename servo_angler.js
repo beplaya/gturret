@@ -29,7 +29,7 @@ module.exports = function(){
         if(angle > 180){
             angle = angle % 180;
         }
-        return A.getValueForPercentage(angle/180);
+        return A.getValueForPercentage(100*angle/180);
     };
 
 
