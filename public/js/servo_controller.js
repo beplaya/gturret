@@ -1,12 +1,14 @@
+"use strict";
+
 app.controller(
         "servoController",
-        "socket",
+        ["socket",
         function($scope, socket){
     $scope.servos = [ ];
     $scope.servos.push(new Servo("x", socket));
     $scope.servos.push(new Servo("z", socket));
 
-});
+}]);
 
 
 function Servo(axis, socket){

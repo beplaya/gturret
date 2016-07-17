@@ -12,7 +12,7 @@ app.controller('socketController', ['$scope','$rootScope', 'socket',
         console.log('connected!!', data);
         $scope.mySocketId = data.socketId;
         $scope.connected = true;
-        $scope.commonData.version = data.version;
+        $scope.version = data.version;
     });
 
 
