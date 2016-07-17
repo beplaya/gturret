@@ -27,12 +27,9 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	for(var y=10; y>=1; y-=step)
 	    locations.push([1, y]);
 
-	locations.push([5, 5]);
-	locations.push([5, 5]);
-	locations.push([5, 5]);
 	//
 
-    var totalRunTime = 2*(locations.length)*frequency;
+    var totalRunTime = 20*(locations.length)*frequency;
     var runTime = 0;
     var timerIntervalFrequency = 1000;
     var timerInterval = setInterval(function(){
