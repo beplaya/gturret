@@ -29,7 +29,7 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 
 	//
 
-    var totalRunTime = 20*(locations.length)*frequency;
+    var totalRunTime = 10 * (locations.length)*frequency;
     var runTime = 0;
     var timerIntervalFrequency = 1000;
     var timerInterval = setInterval(function(){
