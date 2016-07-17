@@ -2,12 +2,6 @@
 var distanceToScreenCM = 10;
 var screenDimsCM = { x: 10, y: 10};
 
-/*var gpioServer = {
-    applyPulseWidth : function(pw, servoController) {
-        console.log('applyPulseWidth', pw, servoController.pin, servoController.name);
-    }
-};*/
-
 require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	
 	

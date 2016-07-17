@@ -26,8 +26,11 @@ module.exports = function(servoX, servoZ) {
     };
 
     C.goToCoordinate = function(x, y){
-        C.servoControllers.x.goToPercentage(C.getXAxisPercentageForYCoord(y));
-        C.servoControllers.z.goToPercentage(C.getZAxisPercentageForXCoord(x));
+        var xap = C.getXAxisPercentageForYCoord(y);
+        var zap = C.getZAxisPercentageForXCoord(x);
+        console.log(x, zap, y, xap);
+        C.servoControllers.x.goToPercentage(xap);
+        C.servoControllers.z.goToPercentage(zap);
     };
 
     C.getZAxisPercentageForXCoord = function(x) {
