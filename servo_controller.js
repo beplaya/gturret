@@ -8,7 +8,7 @@ module.exports = function(gpioServer, pin, name){
 
     S.goToPercentage = function(percentage) {
         S.pw = S.angler.getValueForPercentage(percentage);
-        S.gpioServer.applyPulseWidth(pw, S);
+        S.gpioServer.applyPulseWidth(S.pw, S);
     };
 
     S.goToAngle = function(angle) {
