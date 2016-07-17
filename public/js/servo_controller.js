@@ -1,4 +1,4 @@
-angular.module("angularapp").controller(
+app.controller(
         "servoController",
         "socket",
         function($scope, socket){
