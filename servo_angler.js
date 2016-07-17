@@ -28,7 +28,9 @@ module.exports = function(){
 
     A.getValueForPercentage = function(percentage) {
         var p = Math.abs(percentage/100);
+        console.log('pre', p);
         p = A.restrict(p);
+        console.log('post', p);
         return A.min + (A.rangeMagnitude * p);
     };
 
