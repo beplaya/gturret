@@ -26,17 +26,23 @@ module.exports = function(servoX, servoZ) {
     };
 
     C.goToCoordinate = function(x, y){
-        var xap = C.getXAxisPercentageForYCoord(y);
-        var zap = C.getZAxisPercentageForXCoord(x);
-        console.log(x, zap, y, xap);
-        C.servoControllers.x.goToPercentage(xap);
-        C.servoControllers.z.goToPercentage(zap);
+        var xa = C.getAxisAngleForCoord(y, C.screen.height, C.angles.x);
+        var za = C.getAxisAngleForCoord(x, C.screen.width, C.angles.z);
+        console.log(x, "->", za, y, "->", xa);
+        C.servoControllers.x.goToAngle(xa);
+        C.servoControllers.z.goToAngle(za);
     };
 
-    C.getZAxisPercentageForXCoord = function(x) {
-        x = x > C.screen.width ? C.screen.width : x;
-        x = x < 0 ? 0 : x;
-        return 100 * x / C.screen.width;
+    C.getAxisAngleForCoord = function(V, maxCoord, angleValues) {
+        var angleRange = angleValues.max - angleValues.min;
+
+        V = V > maxCoord ? maxCoord : V;
+        V = V < 0 ? 0 : V;
+
+        var ratioOfMaxCoord = V / maxCoord;
+        var angle = angleValues.min + (angleRange * ratioOfMaxCoord);
+
+        return angle;
     };
 
     C.getXAxisPercentageForYCoord = function(y) {
