@@ -1,14 +1,17 @@
-angular.module("angularapp", []);
-angular.module("angularapp").controller("servoController", function($scope){
+angular.module("angularapp").controller(
+        "servoController",
+        "socket",
+        function($scope, socket){
     $scope.servos = [ ];
-    $scope.servos.push(new Servo("x"));
-    $scope.servos.push(new Servo("z"));
+    $scope.servos.push(new Servo("x", socket));
+    $scope.servos.push(new Servo("z", socket));
 
 });
 
 
-function Servo(axis){
+function Servo(axis, socket){
     this.axis = axis;
+    this.socket = socket;
     this.percent = 0;
     this.percentStep = 1;
 
