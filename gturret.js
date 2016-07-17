@@ -13,20 +13,27 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	turret.setScreenDistanceCM(distanceToScreenCM,
 			screenDimsCM.x, screenDimsCM.y);
 
-	var frequency = 2000;
+	var frequency = 300;
 	var locations = [];
 	var index = 0;
 	//
-	locations.push([1, 1]);
-	locations.push([10, 1]);
-	locations.push([10, 10]);
-	locations.push([1, 10]);
-	locations.push([1, 1]);
+	for(var x=1; x<=10; x++)
+	    locations.push([x, 1]);
+	for(var y=1; y<=10; y++)
+	    locations.push([10, y]);
+    for(var x=10; x>=1; x--)
+	    locations.push([x, 10]);
+	for(var y=10; y>=1; y--)
+	    locations.push([1, y]);
+
+	locations.push([5, 5]);
+	locations.push([5, 5]);
+	locations.push([5, 5]);
 	//
 
     turret.goToCoordinate(0, 0);
 	var servoUpdateInterval = setInterval(function(){
-		//console.log(locations[index][0], locations[index][1]);
+		console.log(locations[index][0], locations[index][1]);
 		turret.goToCoordinate(locations[index][0], locations[index][1]);
 		index++;
 		index = index >= locations.length ? 0 :index; 
