@@ -1,6 +1,7 @@
 var args = process.argv.slice(2);
 var distanceToScreenCM = args[0] || 50;
 var screenDimsCM = { x: 10, y: 10};
+require(__dirname+"/web_server.js")();
 
 require(__dirname+'/lib/gpio_server.js')(function(gpioServer) {
 	
@@ -46,6 +47,6 @@ require(__dirname+'/lib/gpio_server.js')(function(gpioServer) {
 	//#
 	setTimeout(function() { turret.goToPercentage(0, 0); gpioServer.end(); clearInterval(servoUpdateInterval); clearInterval(timerInterval);}, totalRunTime);
 
-	require(__dirname+"/web_server.js");
 });
+
 
