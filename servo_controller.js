@@ -12,6 +12,7 @@ module.exports = function(gpioServer, pin, name){
 
     S.goToAngle = function(angle) {
         var pw = S.angler.getValueForAngle(angle);
+        console.log(angle, "angle->pw", pw);
         S.gpioServer.applyPulseWidth(pw, S);
     };
 
