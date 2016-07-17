@@ -27,10 +27,10 @@ module.exports = function(servoX, servoZ) {
 
     C.goToCoordinate = function(x, y){
         console.log("---");
-        console.log(x, "->", za, y, "->", xa);
-        C.servoControllers.x.goToAngle(xa);
         var xa = C.getAxisAngleForCoord(y, C.screen.height, C.angles.x);
         var za = C.getAxisAngleForCoord(x, C.screen.width, C.angles.z);
+        console.log(x, "->", za, y, "->", xa);
+        C.servoControllers.x.goToAngle(xa);
         C.servoControllers.z.goToAngle(za);
         console.log("---");
     };
