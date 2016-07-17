@@ -2,13 +2,13 @@ var args = process.argv.slice(2);
 var distanceToScreenCM = args[0] || 50;
 var screenDimsCM = { x: 10, y: 10};
 
-require(__dirname+'/gpio_server.js')(function(gpioServer) {
+require(__dirname+'/lib/gpio_server.js')(function(gpioServer) {
 	
 	
-	var servoX = require(__dirname+"/servo_controller.js")(gpioServer, 17, "x-axis");
-	var servoZ = require(__dirname+"/servo_controller.js")(gpioServer, 18, "z-axis");
+	var servoX = require(__dirname+"/lib/servo_controller.js")(gpioServer, 17, "x-axis");
+	var servoZ = require(__dirname+"/lib/servo_controller.js")(gpioServer, 18, "z-axis");
 
-	var turret = require(__dirname+"/two_axis_servo_controller.js")(servoX, servoZ);
+	var turret = require(__dirname+"/lib/two_axis_servo_controller.js")(servoX, servoZ);
 
 	turret.setScreenDistanceCM(distanceToScreenCM,
 			screenDimsCM.x, screenDimsCM.y);
@@ -45,4 +45,7 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	}, frequency);
 	//#
 	setTimeout(function() { turret.goToPercentage(0, 0); gpioServer.end(); clearInterval(servoUpdateInterval); clearInterval(timerInterval);}, totalRunTime);
+
+	require(__dirname+"/web_server.js");
 });
+

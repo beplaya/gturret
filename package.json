@@ -2,8 +2,13 @@
   "name": "gturretpi",
   "version": "1.0.0",
   "description": "",
-  "main": "gpio.js",
+  "main": "gturret.js",
   "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "prompt": "^0.3.0",
+    "socket.io": "^1.4.5",
+    "socket.io-client": "^1.4.5"
   },
   "devDependencies": {},
   "scripts": {
