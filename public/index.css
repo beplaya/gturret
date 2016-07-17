@@ -1,0 +1,19 @@
+.c1 {
+	width:100px;
+	height: 100px;
+	background-color: #f00;
+	position: absolute;
+	left: 300px;
+	top : 200px;
+	z-index: 100;
+}
+
+.c2 {
+	width:100px;
+	height: 100px;
+	background-color: #0f0;
+	position: absolute;
+	left: 330px;
+	top : 290px;
+	z-index: 0;
+}

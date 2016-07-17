@@ -1,0 +1,40 @@
+<html>
+<body ng-app="angularapp">
+
+	<div>
+		<a href="#/">Home</a> <a href="#/other">Other</a> <a href="#/cat">CAT!</a>
+		<a href="#/color">Color</a>
+	</div>
+	<hr>
+	<div ng-view></div>
+	<hr>
+	<div ng-controller="controller1">
+		<h1 ng-click="oc()">saddsasda{{quiz.score}}</h1>
+	</div>
+
+	<div ng-controller="c1">
+		<h1>c1{{F.t}}</h1>
+		<input type="text" ng-model="F.t">
+	</div>
+	<div ng-controller="c2">
+		<h1>c2{{F.t}}</h1>
+	</div>
+
+
+
+
+	<div ng-controller="c1" class="c1">c1{{v}}</div>
+	<div ng-controller="c2" class="c2">c2{{v}}</div>
+
+
+
+	<script type="text/javascript"
+		src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/color/color.js"></script>
+	<script type="text/javascript" src="js/cat/cat.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</body>
+</html>
