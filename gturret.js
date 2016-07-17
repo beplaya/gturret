@@ -32,7 +32,7 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	locations.push([5, 5]);
 	//
 
-    var totalRunTime = 2*((locations.length)*frequency;
+    var totalRunTime = 2*(locations.length)*frequency;
     var runTime = 0;
     var timerInterval = setInterval(function(){runTime+1000; console.log('Run time (s):', runTime, ' Time left (s):', (totalRunTime-totalRunTime));}, 1000);
 	var servoUpdateInterval = setInterval(function(){
@@ -42,5 +42,5 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 		index = index >= locations.length ? 0 :index; 
 	}, frequency);
 	//#
-	setTimeout(function() { turret.goToPercentage(0, 0); gpioServer.end(); clearInterval(servoUpdateInterval); clearInterval(timerInterval);}, totalRunTime));
+	setTimeout(function() { turret.goToPercentage(0, 0); gpioServer.end(); clearInterval(servoUpdateInterval); clearInterval(timerInterval);}, totalRunTime);
 });
