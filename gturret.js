@@ -45,7 +45,13 @@ require(__dirname+'/lib/gpio_server.js')(function(gpioServer) {
 		index = index >= locations.length ? 0 :index; 
 	}, frequency);
 	//#
-	setTimeout(function() { turret.goToPercentage(0, 0); gpioServer.end(); clearInterval(servoUpdateInterval); clearInterval(timerInterval);}, totalRunTime);
+	setTimeout(function() {
+        turret.goToPercentage(0, 0);
+        gpioServer.end();
+        clearInterval(servoUpdateInterval);
+        clearInterval(timerInterval);
+        console.log("ALL DONE!");
+	    }, totalRunTime);
 
 });
 
