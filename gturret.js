@@ -32,5 +32,5 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 		index = index >= locations.length ? 0 :index; 
 	}, frequency);
 	//#
-	setTimeout(function() { turret.goToCoordinate(0, 0); gpioServer.end(); clearInterval(servoUpdateInterval)}, ((locations.length)*frequency));
+	setTimeout(function() { turret.goToCoordinate(0, 0); gpioServer.end(); clearInterval(servoUpdateInterval)}, 3*((locations.length)*frequency));
 });
