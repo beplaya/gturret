@@ -20,6 +20,7 @@ module.exports = function(gpioServer, pin, name){
         }
         S.angler.restrictions.angle.min = min;
         S.angler.restrictions.angle.max = max;
+        console.log()
     };
 
     S.goToPercentage = function(percentage) {

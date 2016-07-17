@@ -66,7 +66,8 @@ module.exports = function(servoX, servoZ) {
         console.log("_____________________");
     };
 
+    console.log("@#@");
     C.setScreenDistanceCM(10, 10, 10);
-
+    console.log("@#@");
     return C;
 }
