@@ -1,5 +1,5 @@
 
-var distanceToScreenCM = 1;
+var distanceToScreenCM = 100;
 var screenDimsCM = { x: 10, y: 10};
 
 require(__dirname+'/gpio_server.js')(function(gpioServer) {
