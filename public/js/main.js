@@ -5,3 +5,8 @@ angular.module("angularapp").controller("servoController", function($scope){
     $scope.servos.push(new Servo("z"));
 
 });
+
+
+function Servo(axis){
+    this.axis = axis;
+}
