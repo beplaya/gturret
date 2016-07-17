@@ -4,16 +4,17 @@ module.exports = function(gpioServer, pin, name){
     S.angler.setRange(600, 2500);
     S.gpioServer = gpioServer;
     S.pin = pin;
+    S.pw = 0;
 
     S.goToPercentage = function(percentage) {
-        var pw = S.angler.getValueForPercentage(percentage);
+        S.pw = S.angler.getValueForPercentage(percentage);
         S.gpioServer.applyPulseWidth(pw, S);
     };
 
     S.goToAngle = function(angle) {
-        var pw = S.angler.getValueForAngle(angle);
-        console.log(angle, "angle->pw", pw);
-        S.gpioServer.applyPulseWidth(pw, S);
+        S.pw = S.angler.getValueForAngle(angle);
+        //console.log(angle, "angle->pw", pw);
+        S.gpioServer.applyPulseWidth(S.pw, S);
     };
 
     return S;

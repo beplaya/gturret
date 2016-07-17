@@ -20,6 +20,10 @@ module.exports = function(servoX, servoZ) {
         }
     };
 
+    C.log = function(){
+        console.log(C.servoControllers.x.pw, C.servoControllers.z.pw);
+    };
+
     C.goToPercentage = function(xAxisPercentage, zAxisPercentage){
         C.servoControllers.x.goToPercentage(xAxisPercentage);
         C.servoControllers.z.goToPercentage(zAxisPercentage);
@@ -54,7 +58,7 @@ module.exports = function(servoX, servoZ) {
     };
 
     C.setScreenDistanceCM = function(distance, cmWidth, cmHeight) {
-        console.log("_____________________");
+        //console.log("_____________________");
         C.screen.width = cmWidth;
         C.screen.height = cmHeight;
         var a,b,c, angle;
@@ -73,12 +77,10 @@ module.exports = function(servoX, servoZ) {
         C.angles.x.min = 90 - angle;
         C.angles.x.max = 180 - C.angles.x.min;
 
-        console.dir(C.angles);
-        console.log("_____________________");
+        //console.dir(C.angles);
+        //console.log("_____________________");
     };
 
-    console.log("@#@");
-    C.setScreenDistanceCM(10, 10, 10);
-    console.log("@#@");
+    C.setScreenDistanceCM(1, 1, 1);
     return C;
 }
