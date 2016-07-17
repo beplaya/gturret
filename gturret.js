@@ -17,13 +17,13 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 	var locations = [];
 	var index = 0;
 	//
-	for(var x=1; x<=10; x++)
+	for(var x=1; x<=10; x+=.2)
 	    locations.push([x, 1]);
-	for(var y=1; y<=10; y++)
+	for(var y=1; y<=10; y+=.2)
 	    locations.push([10, y]);
-    for(var x=10; x>=1; x--)
+    for(var x=10; x>=1; x-=.2)
 	    locations.push([x, 10]);
-	for(var y=10; y>=1; y--)
+	for(var y=10; y>=1; y-=.2)
 	    locations.push([1, y]);
 
 	locations.push([5, 5]);
@@ -38,5 +38,5 @@ require(__dirname+'/gpio_server.js')(function(gpioServer) {
 		index = index >= locations.length ? 0 :index; 
 	}, frequency);
 	//#
-	setTimeout(function() { turret.goToCoordinate(0, 0); gpioServer.end(); clearInterval(servoUpdateInterval)}, 3*((locations.length)*frequency));
+	setTimeout(function() { turret.goToCoordinate(0, 0); gpioServer.end(); clearInterval(servoUpdateInterval)}, 1*((locations.length)*frequency));
 });
