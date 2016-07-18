@@ -14,7 +14,7 @@ function Servo(axis, socket, invert){
     this.invert = invert || false;
     this.socket = socket;
     this.percent = 0;
-    this.percentStep = 5;
+    this.percentStep = 2;
 
     this.getPercentToSend = function(){
         return this.invert ? (100-this.percent) : this.percent;
