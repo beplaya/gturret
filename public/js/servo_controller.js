@@ -20,7 +20,7 @@ function Servo(axis, socket, invert){
         return this.invert ? (100-this.percent) : this.percent;
     }
 
-    this.onCCW = function(servo) {s
+    this.onCCW = function(servo) {
         var self = this;
         console.log("ccw", self.axis);
         if(self.percent - self.percentStep >= 0){
