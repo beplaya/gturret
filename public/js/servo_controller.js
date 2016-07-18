@@ -13,7 +13,7 @@ function Servo(axis, socket){
     this.axis = axis;
     this.socket = socket;
     this.percent = 0;
-    this.percentStep = 1;
+    this.percentStep = 5;
 
     this.onCCW = function(servo) {
         var self = this;

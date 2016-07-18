@@ -15,6 +15,9 @@ app.controller('socketController', ['$scope','$rootScope', 'socket',
         $scope.version = data.version;
     });
 
+    $scope.endGPIO = function(){
+        socket.emit('web_endGPIO', {}, function(){});
+    }
 
 //    socket.on('?', function (response) {
 //        socket.emit('?', {}, function (result) {});
