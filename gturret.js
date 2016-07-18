@@ -52,7 +52,7 @@ var onGPIOConnectListener = function(gpioServer) {
 	setTimeout(function() {
         turret.goToPercentage(0, 0);
         gpioServer.end();
-        clearInterval(servoUpdateInterval);
+        //clearInterval(servoUpdateInterval);
         clearInterval(timerInterval);
         console.log("ALL DONE!");
 	    }, totalRunTime);
