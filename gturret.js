@@ -1,7 +1,7 @@
 var args = process.argv.slice(2);
 var distanceToScreenCM = args[0] || 50;
 var screenDimsCM = { x: 10, y: 10};
-var socketApp = require(__dirname+"/web_server.js")();
+var socketApp = require(__dirname+"/gpio_web_server/web_server.js")();
 
 var onGPIOConnectListener = function(gpioServer) {
     console.log("@@");

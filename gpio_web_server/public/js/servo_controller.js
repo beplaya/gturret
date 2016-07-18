@@ -6,6 +6,11 @@ app.controller('servoController', ['$scope','$rootScope', 'socket',
     $scope.servos.push(new Servo("x", socket));
     $scope.servos.push(new Servo("z", socket, true));
 
+    $scope.updateAllServos = function() {
+        for(var i=0; i<$scope.servos.length; i++){
+            $scope.servos[i].update();
+        }
+    };
 }]);
 
 
@@ -27,7 +32,7 @@ function Servo(axis, socket, invert){
             self.percent -= self.percentStep;
         }
 
-        self.socket.emit('web_gotoPercent', {axis:self.axis, percent:self.getPercentToSend()}, function (result) {});
+        self.socket.emit('web_gotoPercent', {axis:[self.axis], percent:self.getPercentToSend()}, function (result) {});
     };
 
     this.onCW = function(servo) {
@@ -35,7 +40,12 @@ function Servo(axis, socket, invert){
         console.log("cw", self.axis);
         if(self.percent + self.percentStep <= 100){
             self.percent += self.percentStep;
-            self.socket.emit('web_gotoPercent', {axis:self.axis, percent:self.getPercentToSend()}, function (result) {});
         }
+        self.update();
+    };
+
+    this.update = function(){
+        var self = this;
+        self.socket.emit('web_gotoPercent', {axis:self.axis, percent:self.getPercentToSend()}, function (result) {});
     };
 }

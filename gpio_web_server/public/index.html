@@ -1,0 +1,40 @@
+<html>
+<head>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body ng-app="angularapp">
+
+<div class="row">
+    <div ng-controller="socketController" class="swimlane">{{connected ? 'connected' : 'connecting...'}} {{version}}
+        <br>
+        <button ng-click="endGPIO()">END GPIO</button>
+    </div>
+</div>
+<div class="row">
+    <div ng-controller="servoController" class="swimlane">
+        <div ng-repeat="S in servos track by $index">
+            {{S.axis}}
+            <button ng-click="S.onCCW()">ccw</button>
+            {{S.percent}}
+            <button ng-click="S.onCW()">cw</button>
+        </div>
+        <button ng-click="updateAllServos()">Update All</button>
+    </div>
+</div>
+
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/socket.io-client/socket.io.js"></script>
+<!---->
+<script type="text/javascript" src="js/socket.js"></script>
+<!---->
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/socket_controller.js"></script>
+<script type="text/javascript" src="js/servo_controller.js"></script>
+<!---->
+</body>
+</html>
