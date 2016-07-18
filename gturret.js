@@ -58,6 +58,7 @@ var onGPIOConnectListener = function(gpioServer) {
 	    }, totalRunTime);
 
     socketApp.endGPIO = function(){
+        console.log('3');
         gpioServer.end();
     };
 
