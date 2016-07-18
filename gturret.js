@@ -1,11 +1,9 @@
 var args = process.argv.slice(2);
 var distanceToScreenCM = args[0] || 50;
 var screenDimsCM = { x: 10, y: 10};
-var _gpioServer;
 var socketApp = require(__dirname+"/web_server.js")();
 
 var onGPIOConnectListener = function(gpioServer) {
-    _gpioServer = gpioServer;
     console.log("@@");
     if(socketApp)
         console.log('socketApp is alive')
