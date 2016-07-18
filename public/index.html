@@ -2,9 +2,11 @@
 <body ng-app="angularapp">
 
 
-	<div ng-controller="socketController">{{connected ? 'connected' : 'connecting...'}} {{version}}</div>
+	<div ng-controller="socketController">{{connected ? 'connected' : 'connecting...'}} {{version}}
+        <br>
+        <button ng-click="endGPIO()">END</button>
+    </div>
 	<div ng-controller="servoController">
-        asdsda
         {{servos.length}}
 		<div ng-repeat="S in servos track by $index">
 			{{S.axis}}
