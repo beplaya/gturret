@@ -24,4 +24,5 @@ module.exports = function() {
 
     server.listen(port);
     console.log("@ listening on port" + port);
+    return app;
 };
