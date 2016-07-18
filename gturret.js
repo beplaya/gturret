@@ -3,9 +3,13 @@ var distanceToScreenCM = args[0] || 50;
 var screenDimsCM = { x: 10, y: 10};
 var socketApp = require(__dirname+"/web_server.js")();
 
-require(__dirname+'/lib/gpio_server.js')(function(gpioServer) {
-	
-	
+var onGPIOConnectListener = function(gpioServer) {
+    console.log("@@");
+    if(socketApp)
+        console.log('socketApp is alive')
+    else
+        console.log('socketApp is dne')
+
 	var servoX = require(__dirname+"/lib/servo_controller.js")(gpioServer, 17, "x-axis");
 	var servoZ = require(__dirname+"/lib/servo_controller.js")(gpioServer, 18, "z-axis");
 
@@ -42,7 +46,7 @@ require(__dirname+'/lib/gpio_server.js')(function(gpioServer) {
 		//console.log(locations[index][0], locations[index][1]);
 		turret.goToCoordinate(locations[index][0], locations[index][1]);
 		index++;
-		index = index >= locations.length ? 0 :index; 
+		index = index >= locations.length ? 0 :index;
 	}, frequency);
 	//#
 	setTimeout(function() {
@@ -53,11 +57,13 @@ require(__dirname+'/lib/gpio_server.js')(function(gpioServer) {
         console.log("ALL DONE!");
 	    }, totalRunTime);
 
-
     socketApp.servos = {
         x : servoX,
         z : servoZ
     };
-});
 
+}
+
+
+require(__dirname+'/lib/gpio_server.js')(onGPIOConnectListener);
 
