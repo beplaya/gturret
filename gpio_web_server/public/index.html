@@ -6,20 +6,38 @@
 <body ng-app="angularapp">
 
 <div class="row">
-    <div ng-controller="socketController" class="swimlane">{{connected ? 'connected' : 'connecting...'}} {{version}}
-        <br>
+    <div ng-controller="socketController" class="swimlane"
+         style="background-color:{{connected ? '#8f8' : '#f88'}}">
+        {{connected ? 'connected' : 'connecting...'}} {{version}}
         <button ng-click="endGPIO()">END GPIO</button>
     </div>
 </div>
 <div class="row">
     <div ng-controller="servoController" class="swimlane">
-        <div ng-repeat="S in servos track by $index">
-            {{S.axis}}
-            <button ng-click="S.onCCW()">ccw</button>
-            {{S.percent}}
-            <button ng-click="S.onCW()">cw</button>
-        </div>
-        <button ng-click="updateAllServos()">Update All</button>
+        <table>
+            <tr>
+                <td>
+                    <div ng-repeat="S in servos track by $index">
+                        {{S.axis}}
+                        <button ng-click="S.onCCW()">ccw</button>
+                        {{S.percent}}
+                        <button ng-click="S.onCW()">cw</button>
+                    </div>
+                    <button ng-click="updateAllServos()">Update All</button>
+                </td>
+                <td style="border: 2px solid black;">
+                    <div>
+                        <button ng-click="turret.setCenter()">Update Turret</button>
+                    </div>
+                    <div style="background-color:white; padding:5px">
+                        <h5>Modes:</h5>
+                        <div ng-repeat="M in turret.modes track by $index">
+                            <button ng-click="turret.setMode(M)">{{M}}</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 

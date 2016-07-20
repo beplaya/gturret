@@ -19,4 +19,18 @@ module.exports = function(app, io, socket){
             console.log('web_gotoPercent ERROR', data);
         }
     });
+    socket.on('web_turret_setCenterPercent', function(data) {
+        if(app.turret && data.center){
+            app.turret.setCenterPercent(data.center);
+        } else {
+            console.log('web_turret_setCenterPercent ERROR', data);
+        }
+    });
+    socket.on('web_turret_setMode', function(data) {
+        if(app.turret && data.mode){
+            app.turret.setMode(data.mode);
+        } else {
+            console.log('web_turret_setMode ERROR', data);
+        }
+    });
 }
