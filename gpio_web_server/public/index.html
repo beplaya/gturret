@@ -10,6 +10,12 @@
          style="background-color:{{connected ? '#8f8' : '#f88'}}">
         {{connected ? 'connected' : 'connecting...'}} {{version}}
         <button ng-click="endGPIO()">END GPIO</button>
+        <br>
+
+        <div class="row">
+            <img src="{{streamUrl}}" width="100px">
+        </div>
+
     </div>
 </div>
 <div class="row">
@@ -40,7 +46,6 @@
         </table>
     </div>
 </div>
-
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
