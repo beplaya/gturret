@@ -6,6 +6,7 @@ app.controller('socketController', ['$scope','$rootScope', 'socket',
 
     socket.on('disconnect', function (data) {
         $scope.connected = false;
+        $scope.showLoading();
     });
 
     socket.on('connected', function (data) {
@@ -13,6 +14,7 @@ app.controller('socketController', ['$scope','$rootScope', 'socket',
         $scope.mySocketId = data.socketId;
         $scope.connected = true;
         $scope.version = data.version;
+        $scope.showLoading();
     });
 
     socket.on('liveStream', function (data) {
@@ -32,8 +34,10 @@ app.controller('socketController', ['$scope','$rootScope', 'socket',
 //        socket.emit('?', {}, function (result) {});
 //    });
 
-    var ctx = document.getElementById('streamCanvas').getContext('2d');
-    var img = new Image();
-    img.src = 'images/loadinggif.gif';
-    ctx.drawImage(img, 0, 0);
+    $scope.showLoading = function() {
+        var ctx = document.getElementById('streamCanvas').getContext('2d');
+        var img = new Image();
+        img.src = 'images/loadinggif.gif';
+        ctx.drawImage(img, 0, 0);
+    }
 }]);
