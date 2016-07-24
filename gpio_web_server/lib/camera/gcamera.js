@@ -14,7 +14,6 @@ function GCamera(){
         //
         console.log("Starting camera...");
 
-        var fs = require('fs');
         var spawn = require('child_process').spawn;
         var args = ["-w", "640", "-h", "480", "-o", this.filePath, "-t", "999999999", "-tl", "100"];
         this.proc = spawn('raspistill', args);
@@ -24,9 +23,11 @@ function GCamera(){
 //            io.sockets.emit('liveStream', url);
 //        });
         setInterval(function(){
-            fs.readFile(self.filePath, function(err, buf){
-                console.log("  >><< ");
-                io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
+            self.fs.readFile(self.filePath, function(err, buf){
+                if(buf){
+                    console.log("  >><< ");
+                    io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
+                }
             });
         }, 1000);
     }
