@@ -7,6 +7,7 @@ function GCamera(){
     this.fs = require('fs');
 
     this.start = function(io) {
+        var self = this;
         if(this.streaming) return;
         //
         this.streaming = false;
@@ -23,10 +24,11 @@ function GCamera(){
 //            io.sockets.emit('liveStream', url);
 //        });
         setInterval(function(){
-            var url = 'image_stream.jpg?_t=' + (Math.random() * 100000);
-            console.log("  >>watchFile<< ", url);
-            io.sockets.emit('liveStream', url);
-        }, 500);
+            fs.readFile(self.filePath, function(err, buf){
+                console.log("  >><< ");
+                io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
+            });
+        }, 1000);
     }
 
     this.stop = function() {

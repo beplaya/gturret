@@ -3,7 +3,6 @@
 app.controller('socketController', ['$scope','$rootScope', 'socket',
                     function($scope, $rootScope, socket) {
     $scope.socket = socket;
-    $scope.streamUrl = 'images/loadinggif.gif';
 
     socket.on('disconnect', function (data) {
         $scope.connected = false;
@@ -16,8 +15,13 @@ app.controller('socketController', ['$scope','$rootScope', 'socket',
         $scope.version = data.version;
     });
 
-    socket.on('liveStream', function (url) {
-        $scope.streamUrl = url;
+    socket.on('liveStream', function (data) {
+        var ctx = document.getElementById('streamCanvas').getContext('2d');
+        if (data.image) {
+            var img = new Image();
+            img.src = 'data:image/jpeg;base64,' + data.buffer;
+            ctx.drawImage(img, 0, 0);
+        }
     });
 
     $scope.endGPIO = function(){
