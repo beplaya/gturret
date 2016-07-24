@@ -16,26 +16,26 @@ function GCamera(){
 
         var spawn = require('child_process').spawn;
         var args = ["-w", "640", "-h", "480", "-o", this.filePath, "-t", "999999999", "-tl", "100"];
+        console.log('raspistill', args);
         this.proc = spawn('raspistill', args);
 //        this.fs.watchFile(this.filePath, function(current, previous) {
 //            var url = 'image_stream.jpg?_t=' + (Math.random() * 100000);
 //            console.log("  >>watchFile<< ", url);
 //            io.sockets.emit('liveStream', url);
 //        });
-        this.streamInterval = setInterval(function(){
-            self.fs.readFile(self.filePath, function(err, buf){
-                if(err) {
-                    console.log(err);
-                    clearInterval(self.streamInterval);
-                }
-                if(!buf){
-                    console.log("Error: buffer empty!");
-                } else {
-                    console.log("  >><< ");
-                    io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
-                }
-            });
-        }, 2000);
+        //this.streamInterval = setInterval(function(){
+        self.fs.readFile(self.filePath, function(err, buf){
+            if(err) {
+                console.log(err);
+            }
+            if(!buf){
+                console.log("Error: buffer empty!");
+            } else {
+                console.log("  >><< ");
+                io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
+            }
+        });
+        //}, 1000);
     }
 
     this.stop = function() {
