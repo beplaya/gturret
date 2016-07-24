@@ -8,13 +8,13 @@ module.exports = function(app, io, socket){
         app.endGPIO();
     });
     socket.on('web_gotoPercent', function(data) {
-        console.log('web_gotoPercent', data);
+        console.log('          ++++++++++++   ', 'web_gotoPercent', data);
 
         if(app.servos && data.axis){
             var servo = app.servos[data.axis];
             if(!servo) console.log('no servo for axis:', data.axis, '!');
             if(servo) {
-                console.log('   -->web_gotoPercent', data.axis, data.percent);
+                console.log('          ++++++++++++   ', '   -->web_gotoPercent', data.axis, data.percent);
                 servo.goToPercentage(data.percent*1);
             }
         } else {
@@ -22,7 +22,7 @@ module.exports = function(app, io, socket){
         }
     });
     socket.on('web_turret_setCenterPercent', function(data) {
-        console.log('web_turret_setCenterPercent', data);
+        console.log('          ++++++++++++   ', 'web_turret_setCenterPercent', data);
         if(app.turret && data.center){
             app.turret.setCenter(data.center);
         } else {
@@ -30,7 +30,7 @@ module.exports = function(app, io, socket){
         }
     });
     socket.on('web_turret_setMode', function(data) {
-        console.log('web_turret_setMode', data);
+        console.log('          ++++++++++++   ', web_turret_setMode', data);
 
         if(app.turret && data.mode){
             app.turret.setMode(data.mode);
