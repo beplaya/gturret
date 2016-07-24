@@ -3,7 +3,7 @@ function GCamera(){
     if (!(this instanceof GCamera)) return new GCamera;
     //
     this.proc;
-    this.filePath = __dirname + '/../../stream/image_stream.jpg';
+    this.filePath = __dirname + '/../../public/stream/image_stream.jpg';
     this.fs = require('fs');
 
     this.start = function(io) {

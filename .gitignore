@@ -6,4 +6,5 @@
 node_modules/*
 !node_modules/pi-fast-gpio-master/
 bower_components/
-stream/
+stream/*.jpg
+stream/*.gif
