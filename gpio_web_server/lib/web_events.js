@@ -30,7 +30,7 @@ module.exports = function(app, io, socket){
         }
     });
     socket.on('web_turret_setMode', function(data) {
-        console.log('          ++++++++++++   ', web_turret_setMode', data);
+        console.log('          ++++++++++++   ', 'web_turret_setMode', data);
 
         if(app.turret && data.mode){
             app.turret.setMode(data.mode);
