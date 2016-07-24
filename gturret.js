@@ -19,7 +19,7 @@ var onGPIOConnectListener = function(gpioServer) {
 	turret.setScreenDistanceCM(distanceToScreenCM,
 			screenDimsCM.x, screenDimsCM.y);
 
-	var frequency = 1500;
+	var frequency = 200;
 	var locations = [];
 	var index = 0;
 	var step = 2;
