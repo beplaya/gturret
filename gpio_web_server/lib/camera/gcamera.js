@@ -20,20 +20,7 @@ function GCamera(){
         console.log('raspistill', args.join(" "));
         console.log('');
         this.proc = spawn('raspistill', args);
-        this.fs.watchFile(this.filePath, function(current, previous) {
-            self.fs.readFile(self.filePath, function(err, buf){
-                if(err) {
-                    console.log(err);
-                }
-                if(!buf){
-                    console.log("Error: buffer empty!");
-                } else {
-                    console.log("  >><< ");
-                    io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
-                }
-            });
-        });
-//        this.streamInterval = setInterval(function(){
+//        this.fs.watchFile(this.filePath, function(current, previous) {
 //            self.fs.readFile(self.filePath, function(err, buf){
 //                if(err) {
 //                    console.log(err);
@@ -45,7 +32,20 @@ function GCamera(){
 //                    io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
 //                }
 //            });
-//        }, 1000);
+//        });
+        this.streamInterval = setInterval(function(){
+            self.fs.readFile(self.filePath, function(err, buf){
+                if(err) {
+                    console.log(err);
+                }
+                if(!buf){
+                    console.log("Error: buffer empty!");
+                } else {
+                    console.log("  >><< ");
+                    io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
+                }
+            });
+        }, 500);
     }
 
     this.stop = function() {
