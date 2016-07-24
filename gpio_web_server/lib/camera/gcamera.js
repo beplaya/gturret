@@ -23,19 +23,19 @@ function GCamera(){
 //            console.log("  >>watchFile<< ", url);
 //            io.sockets.emit('liveStream', url);
 //        });
-        //this.streamInterval = setInterval(function(){
-        self.fs.readFile(self.filePath, function(err, buf){
-            if(err) {
-                console.log(err);
-            }
-            if(!buf){
-                console.log("Error: buffer empty!");
-            } else {
-                console.log("  >><< ");
-                io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
-            }
-        });
-        //}, 1000);
+        this.streamInterval = setInterval(function(){
+            self.fs.readFile(self.filePath, function(err, buf){
+                if(err) {
+                    console.log(err);
+                }
+                if(!buf){
+                    console.log("Error: buffer empty!");
+                } else {
+                    console.log("  >><< ");
+                    io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
+                }
+            });
+        }, 1000);
     }
 
     this.stop = function() {
