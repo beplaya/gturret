@@ -3,7 +3,7 @@ function GCamera(){
     if (!(this instanceof GCamera)) return new GCamera;
     //
     this.proc;
-    this.filePath = __dirname + '/stream/image_stream.jpg';
+    this.filePath = __dirname + '/../../stream/image_stream.jpg';
     this.fs = require('fs');
 
     this.start = function(io) {
@@ -28,12 +28,14 @@ function GCamera(){
                     console.log(err);
                     clearInterval(self.streamInterval);
                 }
-                if(buf){
+                if(!buf){
+                    console.log("Error: buffer empty!");
+                } else {
                     console.log("  >><< ");
                     io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
                 }
             });
-        }, 1000);
+        }, 2000);
     }
 
     this.stop = function() {
