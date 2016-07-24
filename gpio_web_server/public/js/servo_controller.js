@@ -56,8 +56,6 @@ function Servo(axis, socket, invert){
         if(self.percent - self.percentStep >= 0){
             self.percent -= self.percentStep;
         }
-
-        self.socket.emit('web_gotoPercent', {axis:[self.axis], percent:self.getPercentToSend()}, function (result) {});
     };
 
     this.onCW = function(servo) {
@@ -66,7 +64,6 @@ function Servo(axis, socket, invert){
         if(self.percent + self.percentStep <= 100){
             self.percent += self.percentStep;
         }
-        self.update();
     };
 
     this.update = function(){
