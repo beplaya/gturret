@@ -16,7 +16,7 @@ function GCamera(){
 
         var spawn = require('child_process').spawn;
         var args = ["-w", "640", "-h", "480", "-o", this.filePath, "-t", "999999999", "-tl", "100"];
-        console.log('raspistill', args);
+        console.log('raspistill', args.join(" "));
         this.proc = spawn('raspistill', args);
 //        this.fs.watchFile(this.filePath, function(current, previous) {
 //            var url = 'image_stream.jpg?_t=' + (Math.random() * 100000);
