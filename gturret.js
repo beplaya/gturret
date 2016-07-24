@@ -1,20 +1,21 @@
 var args = process.argv.slice(2);
-var distanceToScreenCM = args[0] || 50;
+var distanceToScreenCM =  50;
+var doCamera = args[0] ? true : false;
 var screenDimsCM = { x: 10, y: 10};
-var socketApp = require(__dirname+"/gpio_web_server/web_server.js")();
-
+var socketApp = require(__dirname+"/gpio_web_server/web_server.js")(doCamera);
+socketApp.turret = {mock:true, setCenterPercent:function(){}, setMode:function(){}};
 var onGPIOConnectListener = function(gpioServer) {
     console.log("@@");
     if(socketApp)
         console.log('socketApp is alive')
     else
-        console.log('socketApp is dne')
+        console.log('socketApp dne')
 
 	var servoX = require(__dirname+"/lib/servo_controller.js")(gpioServer, 17, "x-axis");
 	var servoZ = require(__dirname+"/lib/servo_controller.js")(gpioServer, 18, "z-axis");
 
 	var turret = require(__dirname+"/lib/turret.js")(servoX, servoZ);
-
+    socketApp.turret = turret;
 	turret.setScreenDistanceCM(distanceToScreenCM,
 			screenDimsCM.x, screenDimsCM.y);
 
@@ -42,13 +43,6 @@ var onGPIOConnectListener = function(gpioServer) {
                 console.log('Run time (s):', runTime/1000, ' Time left (s):', (totalRunTime-runTime)/1000);
                 turret.log();
             }, timerIntervalFrequency);
-//	var servoUpdateInterval = setInterval(function(){
-//		//console.log(locations[index][0], locations[index][1]);
-//		turret.goToCoordinate(locations[index][0], locations[index][1]);
-//		index++;
-//		index = index >= locations.length ? 0 :index;
-//	}, frequency);
-	//#
 	setTimeout(function() {
         turret.goToPercentage(0, 0);
         gpioServer.end();
@@ -62,7 +56,6 @@ var onGPIOConnectListener = function(gpioServer) {
         gpioServer.end();
     };
 
-    socketApp.turret = turret;
     socketApp.servos = {
         x : servoX,
         z : servoZ

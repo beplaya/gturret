@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(doCamera) {
     console.log("@");
     var express = require('express');
     var app = express();
@@ -24,13 +24,13 @@ module.exports = function() {
 
     server.listen(port);
     console.log("@ listening on port" + port);
+    if(doCamera) {
+        var gcamera = require(__dirname + '/lib/camera/gcamera.js')();
+        gcamera.start(io);
 
-    var gcamera = require(__dirname + '/lib/camera/gcamera.js')();
-    gcamera.start(io);
-
-    setTimeout(function(){
-        gcamera.stop();
-    }, 10000)
-
+        setTimeout(function(){
+            gcamera.stop();
+        }, 10000)
+    }
     return app;
 };
