@@ -24,7 +24,7 @@ module.exports = function(app, io, socket){
     socket.on('web_turret_setCenterPercent', function(data) {
         console.log('web_turret_setCenterPercent', data);
         if(app.turret && data.center){
-            app.turret.setCenterPercent(data.center);
+            app.turret.setCenter(data.center);
         } else {
             console.log('web_turret_setCenterPercent ERROR', data);
         }

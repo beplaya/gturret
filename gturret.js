@@ -3,7 +3,7 @@ var distanceToScreenCM =  50;
 var doCamera = args[0] ? true : false;
 var screenDimsCM = { x: 10, y: 10};
 var socketApp = require(__dirname+"/gpio_web_server/web_server.js")(doCamera);
-socketApp.turret = {mock:true, setCenterPercent:function(){}, setMode:function(){}};
+socketApp.turret = {mock:true, setCenter:function(){}, setMode:function(){}};
 var onGPIOConnectListener = function(gpioServer) {
     console.log("@@");
     if(socketApp)
