@@ -35,7 +35,7 @@ var onGPIOConnectListener = function(gpioServer) {
 
 	//
 
-    var totalRunTime = 3 * (locations.length)*frequency;
+    var totalRunTime = 4 * (locations.length)*frequency;
     var runTime = 0;
     var timerIntervalFrequency = 1000;
     var timerInterval = setInterval(function(){
