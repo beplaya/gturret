@@ -18,6 +18,8 @@ function GCamera(){
         var args = ["-w", "640", "-h", "480", "-o", this.filePath, "-t", "999999999", "-tl", "100"];
         this.proc = spawn('raspistill', args);
         this.fs.watchFile(this.filePath, function(current, previous) {
+            console.log("adssadsad");
+            console.log("   adssadsadadssadsadadssadsadadssadsadadssadsadadssadsadadssadsadadssadsadadssadsad");
             io.sockets.emit('liveStream', 'image_stream.jpg?_t=' + (Math.random() * 100000));
         });
     }
