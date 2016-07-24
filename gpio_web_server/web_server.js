@@ -25,12 +25,14 @@ module.exports = function(doCamera) {
     server.listen(port);
     console.log("@ listening on port" + port);
     if(doCamera) {
-        var gcamera = require(__dirname + '/lib/camera/gcamera.js')();
-        gcamera.start(io);
-
         setTimeout(function(){
-            gcamera.stop();
-        }, 10000)
+            var gcamera = require(__dirname + '/lib/camera/gcamera.js')();
+            gcamera.start(io);
+
+            setTimeout(function(){
+                gcamera.stop();
+            }, 100000);
+        }, 1000);
     }
     return app;
 };
