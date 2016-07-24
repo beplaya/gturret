@@ -23,7 +23,7 @@ function GCamera(){
 //            io.sockets.emit('liveStream', url);
 //        });
         setInterval(function(){
-            var url = 'image_stream.jpg?_t=asdsad';
+            var url = 'image_stream.jpg?_t=' + (Math.random() * 100000);
             console.log("  >>watchFile<< ", url);
             io.sockets.emit('liveStream', url);
         }, 500);

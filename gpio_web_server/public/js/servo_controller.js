@@ -43,8 +43,8 @@ function Servo(axis, socket, invert){
     this.axis = axis;
     this.invert = invert || false;
     this.socket = socket;
-    this.percent = 0;
-    this.percentStep = 2;
+    this.percent = 50;
+    this.percentStep = 5;
 
     this.getPercentToSend = function(){
         return this.invert ? (100-this.percent) : this.percent;
