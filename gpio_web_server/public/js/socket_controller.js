@@ -32,4 +32,8 @@ app.controller('socketController', ['$scope','$rootScope', 'socket',
 //        socket.emit('?', {}, function (result) {});
 //    });
 
+    var ctx = document.getElementById('streamCanvas').getContext('2d');
+    var img = new Image();
+    img.src = 'images/loadinggif.gif';
+    ctx.drawImage(img, 0, 0);
 }]);
