@@ -45,7 +45,7 @@ function GCamera(){
                     io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
                 }
             });
-        }, 30);
+        }, 300);
     }
 
     this.stop = function() {
