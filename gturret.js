@@ -19,7 +19,7 @@ var onGPIOConnectListener = function(gpioServer) {
 	turret.setScreenDistanceCM(distanceToScreenCM,
 			screenDimsCM.x, screenDimsCM.y);
 
-	var frequency = 200;
+	var frequency = 300;
 	var locations = [];
 	var index = 0;
 	var step = 2;
@@ -44,6 +44,7 @@ var onGPIOConnectListener = function(gpioServer) {
                 turret.log();
             }, timerIntervalFrequency);
 	setTimeout(function() {
+	    clearInterval(turret.interval);
         turret.goToPercentage(0, 0);
         gpioServer.end();
         //clearInterval(servoUpdateInterval);
