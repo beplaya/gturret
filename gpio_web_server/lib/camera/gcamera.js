@@ -22,8 +22,12 @@ function GCamera(){
 //            console.log("  >>watchFile<< ", url);
 //            io.sockets.emit('liveStream', url);
 //        });
-        setInterval(function(){
+        this.streamInterval = setInterval(function(){
             self.fs.readFile(self.filePath, function(err, buf){
+                if(err) {
+                    console.log(err);
+                    clearInterval(self.streamInterval);
+                }
                 if(buf){
                     console.log("  >><< ");
                     io.sockets.emit('liveStream', { image: true, buffer: buf.toString('base64') });
