@@ -20,22 +20,11 @@ var onGPIOConnectListener = function(gpioServer) {
 			screenDimsCM.x, screenDimsCM.y);
 
 	var frequency = 300;
-	var locations = [];
 	var index = 0;
 	var step = 2;
 	//
-	for(var x=1; x<=10; x+=step)
-	    locations.push([x, 1]);
-	for(var y=1; y<=10; y+=step)
-	    locations.push([10, y]);
-    for(var x=10; x>=1; x-=step)
-	    locations.push([x, 10]);
-	for(var y=10; y>=1; y-=step)
-	    locations.push([1, y]);
 
-	//
-
-    var totalRunTime = 4 * (locations.length)*frequency;
+    var totalRunTime = 60*60*1000;
     var runTime = 0;
     var timerIntervalFrequency = 1000;
     var timerInterval = setInterval(function(){
